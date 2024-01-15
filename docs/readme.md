@@ -1,28 +1,46 @@
-# Instalasi Microk8s pada Opensuse Linux
+# Instalasi minikube pada Opensuse Linux
 
-1.  Pastikan sudah melakukan setup snap pada local environment.
+Minikube adalah salah satu environment kubernetes yang bisa berjalan di komputer lokal. Jadi kita bisa membuat cluster kubernetes sendiri di laptop kita.
 
-        snap --version
+Persyaratan minimal yang harus dipenuhi oleh komputer kita adalah
 
-    ![snap version](./asset/1.%20snap%20version.png)
+- Memiliki 2 Cpu atau lebih
+- 2 GB ram yang bebas digunakan
+- 20 GB sisa storage
+- Koneksi internet
+- Kontainer atau VM Manager, seperti Docker, QEMU, Hyperkit, Hyper-V, KVM, Parallels, Podman, VirtualBox, or VMware Fusion/Workstation
 
-2.  Install microk8s secara langsung menggunakan perintah berikut
+Berikut adalah langkah-langkah untuk melakukan instalasi minikube pada Opensuse Linux
 
-        sudo snap install microk8s --classic
+1.  Lakukan pengecekan terhadap persyaratan minimal seperti pada persyaratan diatas
 
-3.  Tambahkan user default kita pada group dengan menggunakan perintah berikut
+    ![Instalasi Docker](./asset/1.%20instalasi%20docker.png)
+    ![Spesifikasi persyaratan](./asset/1.%20system%20requirement.png)
 
-        sudo usermod -aG microk8s $(whoami)
+2.  Download file rpm dari minikube dengan curl
 
-4.  Buat folder konfigurasi dari kubernetes secara manual dan ubah owner dari folder tersebut dengan user kita dengan perintah berikut
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
 
-        mkdir ~/.kube
-        sudo chown -R $(whoami) ~/.kube
+3.  Lakukan instalasi file rpm yang sebelumnya sudah didownload
 
-5.  Cek status microk8s apakah sudah berjalan atau tidak
+        sudo rpm -Uvh minikube-latest.x86_64.rpm
 
-        microk8s status
+    ![Instalasi minikube](./asset/2.%20Instalasi%20minikube.png)
 
-    ![microk8s installation](./asset/2.%20microk8s%20installation.png)
+4.  Setelah instalasi selesai, jalankan minikube agar kubernetes bisa dipakai. Untuk proses pertama kali, minikube akan melakukan download dependency dari kubernetes. Perintah untuk menjalankan minikube adalah sebagai berikut
 
-6.  Aktifkan dependency yang dibutuhkan sesuai dengan kebutuhan
+        minikube start
+
+    ![Instalasi minikube sukses](./asset/2.%20Instalasi%20minikube%202.png)
+
+5.  Setelah minkube sukses diinstall, maka kubernetes siap dipakai. Kubernetes bisa diakses melalui beberapa cara, bisa melalui dashboard yang sudah terinstall dengan minikube. Untuk menjalankan dashboard tersebut, kita bisa menggunakan perintah berikut
+
+        minikube dashboard
+
+    ![Tampilan dashboard kubernetes](./asset/3.%20Dashboard%20kubernetes.png)
+
+6.  Selain itu, kubernetes juga bisa diakses melalui terminal dengan menggunakan kubectl. Kubectl pada opensuse dapat diinstall melalui snap secara langsung dengan perintah berikut
+
+        snap install kubectl --classic
+
+    ![Instalasi kubectl](./asset/4.%20instalasi%20kubectl.png)
