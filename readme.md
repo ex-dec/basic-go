@@ -38,4 +38,6 @@ Untuk menjalankan program berikut, kita gunakan environment dari docker secara l
 
         docker run --rm -p 80:80 --name test-go test-go:1
 
+![Setup project](./docs/asset/setup%20project%20golang.png)
+
 Dalam project ini juga ada dokumentasi terkait instalasi minikube pada opensuse, bisa klik link berikut [Klik disini](./docs/readme.md)
