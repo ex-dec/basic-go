@@ -15,6 +15,7 @@ Berikut adalah langkah-langkah untuk melakukan instalasi minikube pada Opensuse 
 1.  Lakukan pengecekan terhadap persyaratan minimal seperti pada persyaratan diatas
 
     ![Instalasi Docker](./asset/1.%20instalasi%20docker.png)
+
     ![Spesifikasi persyaratan](./asset/1.%20system%20requirement.png)
 
 2.  Download file rpm dari minikube dengan curl
