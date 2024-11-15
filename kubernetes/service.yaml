@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-image
+spec:
+  selector:
+    app: golang-image
+  ports:
+  - port: 80
+    targetPort: 80

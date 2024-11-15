@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-image
+spec:
+  selector:
+    matchLabels:
+      app: golang-image
+  template:
+    metadata:
+      labels:
+        app: golang-image
+    spec:
+      containers:
+      - name: golang-image
+        image: exdec/golang-image
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
